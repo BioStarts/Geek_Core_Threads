@@ -26,16 +26,16 @@ public class Threads {
             @Override
             public void run() {
                 for (int i = 0; i < h; i++){
-                    a2[i] = (float)(a2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+                    a2[i] = (float)(a2[i] * Math.sin(0.2f + (i+h) / 5) * Math.cos(0.2f + (i+h) / 5) * Math.cos(0.4f + (i+h) / 2));
                 }
             }
         });
+
         second.start();
         first.join();
         second.join();
         System.arraycopy(a1, 0, arr, 0, h);
         System.arraycopy(a2, 0, arr, h, h);
-        System.currentTimeMillis();
         System.out.println(System.currentTimeMillis() - a);
         System.out.println("Threads time");
         /*for (int j = 0; j<size; j++){
